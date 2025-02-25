@@ -15,12 +15,12 @@ Runs CI in the docker dev container.
 
 if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
     docker build $PULL \
-        -t stactools-packages/ephemeral:dev \
+        -t stactools-packages/glad-global-forest-change:dev \
         -f docker/Dockerfile \
         --target dev-builder \
         .
     docker run --rm \
         --entrypoint uv \
-        stactools-packages/ephemeral:dev \
+        stactools-packages/glad-global-forest-change:dev \
         sync
 fi

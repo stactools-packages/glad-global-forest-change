@@ -1,4 +1,4 @@
-from stactools.ephemeral import stac
+from stactools.glad_global_forest_change import stac
 
 from . import test_data
 

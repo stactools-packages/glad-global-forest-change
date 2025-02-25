@@ -1985,7 +1985,7 @@ wheels = [
 ]
 
 [[package]]
-name = "stactools-ephemeral"
+name = "stactools-glad-global-forest-change"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [

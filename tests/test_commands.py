@@ -4,11 +4,11 @@ from click import Group
 from click.testing import CliRunner
 from pystac import Collection, Item
 
-from stactools.ephemeral.commands import create_ephemeralcmd_command
+from stactools.glad_global_forest_change.commands import create_gladglobalforestchange_command
 
 from . import test_data
 
-command = create_ephemeralcmd_command(Group())
+command = create_gladglobalforestchange_command(Group())
 
 
 def test_create_collection(tmp_path: Path) -> None:

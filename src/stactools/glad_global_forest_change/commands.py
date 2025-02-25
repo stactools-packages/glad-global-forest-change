@@ -3,22 +3,22 @@ import logging
 import click
 from click import Command, Group
 
-from stactools.ephemeral import stac
+from stactools.glad_global_forest_change import stac
 
 logger = logging.getLogger(__name__)
 
 
-def create_ephemeralcmd_command(cli: Group) -> Command:
-    """Creates the stactools-ephemeral command line utility."""
+def create_gladglobalforestchange_command(cli: Group) -> Command:
+    """Creates the stactools-glad-global-forest-change command line utility."""
 
     @cli.group(
-        "ephemeralcmd",
-        short_help=("Commands for working with stactools-ephemeral"),
+        "gladglobalforestchange",
+        short_help=("Commands for working with stactools-glad-global-forest-change"),
     )
-    def ephemeralcmd() -> None:
+    def gladglobalforestchange() -> None:
         pass
 
-    @ephemeralcmd.command(
+    @gladglobalforestchange.command(
         "create-collection",
         short_help="Creates a STAC collection",
     )
@@ -33,7 +33,7 @@ def create_ephemeralcmd_command(cli: Group) -> Command:
         collection.set_self_href(destination)
         collection.save_object()
 
-    @ephemeralcmd.command("create-item", short_help="Create a STAC item")
+    @gladglobalforestchange.command("create-item", short_help="Create a STAC item")
     @click.argument("source")
     @click.argument("destination")
     def create_item_command(source: str, destination: str) -> None:
@@ -46,4 +46,4 @@ def create_ephemeralcmd_command(cli: Group) -> Command:
         item = stac.create_item(source)
         item.save_object(dest_href=destination)
 
-    return ephemeralcmd
+    return gladglobalforestchange

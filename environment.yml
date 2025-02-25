@@ -1,4 +1,4 @@
-name: stactools-ephemeral
+name: stactools-glad-global-forest-change
 channels:
   - conda-forge
   - defaults
