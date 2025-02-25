@@ -4,7 +4,9 @@ from click import Group
 from click.testing import CliRunner
 from pystac import Collection, Item
 
-from stactools.glad_global_forest_change.commands import create_gladglobalforestchange_command
+from stactools.glad_global_forest_change.commands import (
+    create_gladglobalforestchange_command,
+)
 
 from . import test_data
 

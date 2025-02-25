@@ -11,7 +11,9 @@ root = Path(__file__).parents[1]
 examples = root / "examples"
 
 collection = stactools.glad_global_forest_change.stac.create_collection()
-item = stactools.glad_global_forest_change.stac.create_item(str(root / "tests" / "data" / "asset.tif"))
+item = stactools.glad_global_forest_change.stac.create_item(
+    str(root / "tests" / "data" / "asset.tif")
+)
 collection.add_item(item)
 collection.update_extent_from_items()
 collection.normalize_hrefs(str(examples))
