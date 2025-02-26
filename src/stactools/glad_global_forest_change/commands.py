@@ -1,4 +1,5 @@
 import logging
+from typing import Tuple
 
 import click
 from click import Command, Group
@@ -23,27 +24,58 @@ def create_gladglobalforestchange_command(cli: Group) -> Command:
         short_help="Creates a STAC collection",
     )
     @click.argument("destination")
-    def create_collection_command(destination: str) -> None:
+    @click.option(
+        "--cogs",
+        is_flag=True,
+        help="Indicate that assets are stored as COGs",
+        default=False,
+    )
+    def create_collection_command(
+        destination: str,
+        cogs: bool = False,
+    ) -> None:
         """Creates a STAC Collection
 
         Args:
             destination: An HREF for the Collection JSON
         """
-        collection = stac.create_collection()
+        collection = stac.create_collection(cogs=cogs)
         collection.set_self_href(destination)
         collection.save_object()
 
-    @gladglobalforestchange.command("create-item", short_help="Create a STAC item")
-    @click.argument("source")
+    @gladglobalforestchange.command(
+        "create-item",
+        short_help="Creates a STAC item",
+    )
+    @click.argument("asset_hrefs", nargs=-1, required=True)
     @click.argument("destination")
-    def create_item_command(source: str, destination: str) -> None:
+    @click.option(
+        "--cogs",
+        is_flag=True,
+        help="Indicate that assets are stored as COGs",
+        default=False,
+    )
+    def create_item_command(
+        asset_hrefs: Tuple[str, ...],
+        destination: str,
+        cogs: bool = False,
+    ) -> None:
         """Creates a STAC Item
 
         Args:
-            source: HREF of the Asset associated with the Item
-            destination: An HREF for the STAC Item
+            asset_hrefs: One or more HREFs of the assets to include in the item
+            destination: An HREF for the STAC Item JSON output
         """
-        item = stac.create_item(source)
+        if len(asset_hrefs) < 1:
+            raise click.UsageError("At least one asset HREF is required")
+
+        logger.info(f"Creating item from {len(asset_hrefs)} assets")
+        logger.info(f"Saving item to {destination}")
+
+        item = stac.create_item(
+            asset_hrefs=list(asset_hrefs),
+            cogs=cogs,
+        )
         item.save_object(dest_href=destination)
 
     return gladglobalforestchange

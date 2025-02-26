@@ -11,7 +11,7 @@ number as needed.
 
 ### Added
 
-- Nothing.
+- Initial attempt at STAC metadata for the GLAD Global Forest Change dataset
 
 ### Deprecated
 
