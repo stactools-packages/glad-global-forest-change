@@ -23,7 +23,6 @@ dependencies = [
     "rasterio",
     "parse>=1.20.2",
     "pystac>=1.11.0,<2.0.0",
-    "rio-cogeo>=5.3.6",
     "rio-stac>=0.10.0",
     "stactools>=0.5.0",
     "semver>=3.0.4",
@@ -46,6 +45,16 @@ docs = ["ipykernel~=6.29", "jinja2~=3.1"]
 [project.urls]
 Github = "https://github.com/stactools-packages/glad-global-forest-change"
 Issues = "https://github.com/stactools-packages/glad-global-forest-change/issues"
+
+[project.optional-dependencies]
+cogs = [
+    "boto3>=1.37.1",
+    "coiled>=1.80.0",
+    "httpx>=0.28.1",
+    "obstore>=0.4.0",
+    "rio-cogeo>=5.4.1",
+    "tqdm>=4.67.1",
+]
 
 [build-system]
 requires = ["setuptools", "wheel"]
