@@ -12,7 +12,12 @@ examples = root / "examples"
 
 collection = stactools.glad_global_forest_change.stac.create_collection()
 item = stactools.glad_global_forest_change.stac.create_item(
-    str(root / "tests" / "data" / "asset.tif")
+    asset_hrefs=[
+        "https://storage.googleapis.com/earthenginepartners-hansen/GFC-2023-v1.11/Hansen_GFC-2023-v1.11_gain_40N_080W.tif",
+        "https://storage.googleapis.com/earthenginepartners-hansen/GFC-2023-v1.11/Hansen_GFC-2023-v1.11_treecover2000_40N_080W.tif",
+        "https://storage.googleapis.com/earthenginepartners-hansen/GFC-2023-v1.11/Hansen_GFC-2023-v1.11_lossyear_40N_080W.tif",
+        "https://storage.googleapis.com/earthenginepartners-hansen/GFC-2023-v1.11/Hansen_GFC-2023-v1.11_datamask_40N_080W.tif",
+    ]
 )
 collection.add_item(item)
 collection.update_extent_from_items()

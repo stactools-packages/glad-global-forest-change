@@ -8,8 +8,6 @@ from stactools.glad_global_forest_change.commands import (
     create_gladglobalforestchange_command,
 )
 
-from . import test_data
-
 command = create_gladglobalforestchange_command(Group())
 
 
@@ -30,10 +28,15 @@ def test_create_item(tmp_path: Path) -> None:
     # Smoke test for the command line create-item command
     #
     # Most checks should be done in test_stac.py::test_create_item
-    asset_href = test_data.get_path("data/asset.tif")
     path = str(tmp_path / "item.json")
+    asset_hrefs = (
+        "https://storage.googleapis.com/earthenginepartners-hansen/GFC-2023-v1.11/Hansen_GFC-2023-v1.11_gain_20N_000E.tif",
+        "https://storage.googleapis.com/earthenginepartners-hansen/GFC-2023-v1.11/Hansen_GFC-2023-v1.11_treecover2000_20N_000E.tif",
+        "https://storage.googleapis.com/earthenginepartners-hansen/GFC-2023-v1.11/Hansen_GFC-2023-v1.11_lossyear_20N_000E.tif",
+        "https://storage.googleapis.com/earthenginepartners-hansen/GFC-2023-v1.11/Hansen_GFC-2023-v1.11_datamask_20N_000E.tif",
+    )
     runner = CliRunner()
-    result = runner.invoke(command, ["create-item", asset_href, path])
+    result = runner.invoke(command, ["create-item", *asset_hrefs, path])
     assert result.exit_code == 0, "\n{}".format(result.output)
     item = Item.from_file(path)
     item.validate()
