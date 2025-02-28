@@ -41,7 +41,7 @@ stac gladglobalforestchange create-item \
   https://storage.googleapis.com/earthenginepartners-hansen/GFC-2023-v1.11/Hansen_GFC-2023-v1.11_treecover2000_40N_080W.tif \
   https://storage.googleapis.com/earthenginepartners-hansen/GFC-2023-v1.11/Hansen_GFC-2023-v1.11_lossyear_40N_080W.tif \
   https://storage.googleapis.com/earthenginepartners-hansen/GFC-2023-v1.11/Hansen_GFC-2023-v1.11_datamask_40N_080W.tif \
-  /tmp/item.json
+  /tmp/item.json    
 ```
 
 > [!WARNING]  
@@ -51,6 +51,21 @@ stac gladglobalforestchange create-item \
 assets are COGs.
 
 Use `stac gladglobalforestchange --help` to see all subcommands and options.
+
+## Create COGs
+
+The original files hosted on the Google Earth Engine are not cloud-optimized geotiffs (COGs).
+This is a problem for many applications so we added the `create-cogs` function to convert the underlying
+assets to COGs and copy them to a new storage location (either a local directory or an S3 bucket).
+
+```bash
+stac gladglobalforestchange create-cogs {assets} {destination} --region={region}
+```
+
+> [!NOTE]
+> The `create-cogs` function uses [`coiled`](https://www.coiled.io/) to run the translate-and-upload
+> operations for thousands of files. If you run it in AWS you can expect the total cost to be
+> less than $2 for compute which is well within the free-tier for `coiled`.
 
 ## Contributing
 

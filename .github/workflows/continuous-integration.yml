@@ -27,7 +27,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.9", "3.10", "3.11", "3.12"]
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+
     defaults:
       run:
         shell: bash -l {0}
@@ -51,6 +52,6 @@ jobs:
       - name: Update Conda's environemnt
         run: conda env update -f environment.yml -n test
       - name: Install package
-        run: uv sync
+        run: uv sync --all-extras
       - name: Execute linters and test suites
         run: uv run ./scripts/test

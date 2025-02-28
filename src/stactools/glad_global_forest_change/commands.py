@@ -5,8 +5,12 @@ import click
 from click import Command, Group
 
 from stactools.glad_global_forest_change import stac
+from stactools.glad_global_forest_change.cogs import create_cogs, get_file_list
+from stactools.glad_global_forest_change.constants import ASSETS
 
 logger = logging.getLogger(__name__)
+
+DEFAULT_AWS_REGION = "us-west-2"
 
 
 def create_gladglobalforestchange_command(cli: Group) -> Command:
@@ -77,5 +81,54 @@ def create_gladglobalforestchange_command(cli: Group) -> Command:
             cogs=cogs,
         )
         item.save_object(dest_href=destination)
+
+    @gladglobalforestchange.command(
+        "create-cogs",
+        short_help="Convert original files to COGs and upload to cloud storage",
+    )
+    @click.argument(
+        "assets",
+        nargs=-1,
+        required=True,
+        type=click.Choice(ASSETS, case_sensitive=False),
+    )
+    @click.argument(
+        "destination",
+        required=True,
+    )
+    @click.option(
+        "--use-coiled",
+        is_flag=True,
+        help="Use coiled for parallelizing cog translation operation",
+        default=False,
+    )
+    @click.option(
+        "--region",
+        required=False,
+    )
+    def create_cogs_command(
+        assets: Tuple[str, ...],
+        destination: str,
+        use_coiled: bool,
+        region: str,
+    ) -> None:
+        f"""Create COG copies of ASSETS at DESTINATION in the REGION region in AWS
+
+        ASSETS are the names of the assets that you want to copy ({", ".join(ASSETS)})
+
+        DESTINATION is the destination location in S3, e.g. s3://bucket/prefix or a 
+        local directory
+
+        USE_COILED is a flag to enable parallelism with coiled
+
+        REGION is the AWS region
+        """
+        file_list = get_file_list(assets)
+        create_cogs(
+            file_list=file_list,
+            destination=destination,
+            region=region,
+            use_coiled=use_coiled,
+        )
 
     return gladglobalforestchange
