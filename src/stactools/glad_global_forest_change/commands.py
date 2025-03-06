@@ -32,16 +32,26 @@ def create_gladglobalforestchange_command(cli: Group) -> Command:
         help="Indicate that assets are stored as COGs",
         default=False,
     )
+    @click.option(
+        "--include-landsat-assets",
+        is_flag=True,
+        help="Include the first/last Landsat composite images in the item assets "
+        "metadata",
+        default=False,
+    )
     def create_collection_command(
         destination: str,
         cogs: bool = False,
+        include_landsat_assets: bool = False,
     ) -> None:
         """Creates a STAC Collection
 
         Args:
             destination: An HREF for the Collection JSON
         """
-        collection = stac.create_collection(cogs=cogs)
+        collection = stac.create_collection(
+            cogs=cogs, include_landsat_assets=include_landsat_assets
+        )
         collection.set_self_href(destination)
         collection.save_object()
 
