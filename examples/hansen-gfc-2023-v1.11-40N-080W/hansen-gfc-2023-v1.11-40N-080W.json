@@ -2,7 +2,7 @@
   "type": "Feature",
   "stac_version": "1.1.0",
   "stac_extensions": [
-    "https://stac-extensions.github.io/projection/v2.0.0/schema.json"
+    "https://stac-extensions.github.io/projection/v1.2.0/schema.json"
   ],
   "id": "hansen-gfc-2023-v1.11-40N-080W",
   "geometry": {
@@ -88,6 +88,7 @@
       0.0,
       1.0
     ],
+    "proj:epsg": 4326,
     "datetime": "2023-12-31T00:00:00Z"
   },
   "links": [

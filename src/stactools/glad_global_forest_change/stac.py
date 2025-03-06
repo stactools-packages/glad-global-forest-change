@@ -348,6 +348,21 @@ def create_item(asset_hrefs: list[str], cogs: bool = False) -> Item:
     if semver.Version.parse(get_stac_version()) <= semver.Version.parse("1.0.0"):
         item.ext.add("raster")
 
+    # ensure proj:epsg gets set
+    item.properties["proj:epsg"] = EPSG
+
+    # we need to stick with projection extension <v2.0 in order to maintain
+    # compatibility with the STACIT driver in older GDAL versions
+    extensions = ["https://stac-extensions.github.io/projection/v1.2.0/schema.json"]
+    extensions.extend(
+        (
+            e
+            for e in item.stac_extensions
+            if not e.startswith("https://stac-extensions.github.io/projection")
+        )
+    )
+    item.stac_extensions = extensions
+
     assert isinstance(item, Item)
 
     return item
