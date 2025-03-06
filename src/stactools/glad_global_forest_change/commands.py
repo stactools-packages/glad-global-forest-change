@@ -97,20 +97,12 @@ def create_gladglobalforestchange_command(cli: Group) -> Command:
         required=True,
     )
     @click.option(
-        "--use-coiled",
-        is_flag=True,
-        help="Use coiled for parallelizing cog translation operation",
-        default=False,
-    )
-    @click.option(
         "--region",
         required=False,
     )
     def create_cogs_command(
         assets: Tuple[str, ...],
         destination: str,
-        use_coiled: bool,
-        region: str,
     ) -> None:
         f"""Create COG copies of ASSETS at DESTINATION in the REGION region in AWS
 
@@ -118,17 +110,11 @@ def create_gladglobalforestchange_command(cli: Group) -> Command:
 
         DESTINATION is the destination location in S3, e.g. s3://bucket/prefix or a 
         local directory
-
-        USE_COILED is a flag to enable parallelism with coiled
-
-        REGION is the AWS region
         """
         file_list = get_file_list(assets)
         create_cogs(
             file_list=file_list,
             destination=destination,
-            region=region,
-            use_coiled=use_coiled,
         )
 
     return gladglobalforestchange

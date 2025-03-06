@@ -49,7 +49,6 @@ Issues = "https://github.com/stactools-packages/glad-global-forest-change/issues
 [project.optional-dependencies]
 cogs = [
     "boto3>=1.37.1",
-    "coiled>=1.80.0",
     "httpx>=0.28.1",
     "obstore>=0.4.0",
     "rio-cogeo>=5.4.1",

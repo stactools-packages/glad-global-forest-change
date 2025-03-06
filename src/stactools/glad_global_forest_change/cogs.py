@@ -93,23 +93,15 @@ def cogify(
 def create_cogs(
     file_list: List[str],
     destination: str,
-    region: str,
     base_url: str = BASE_URL,
-    use_coiled: bool = False,
 ) -> List[str]:
-    """Convert a list of raw files into COGs and upload to storage
-
-    This function uses coiled to parallelize this resource-intensive transfer
-    operation. For more information on how to get started check out the coiled
-    docs: https://docs.coiled.io/user_guide/index.html#
-    """
+    """Convert a list of raw files into COGs and upload to storage"""
     import boto3
     from tqdm import tqdm
 
     destination = to_url(destination)
 
     protocol = urllib.parse.urlparse(destination).scheme
-    local = destination.startswith("file://")
 
     if protocol == "s3":
         session = boto3.Session()
@@ -129,30 +121,10 @@ def create_cogs(
             f"{protocol} is not supported. please use either file:// or s3://"
         )
 
-    if use_coiled:
-        import coiled
-
-        _cogify = coiled.function(
-            region=region,
-            threads_per_worker=-1,
-            n_workers=[0, 100],
-            local=local,
-        )(cogify)
-
-        _cogs = _cogify.map(
-            file_list, destination=destination, config=config, base_url=base_url
-        )
-
-        cogs = []
-        for _cog in tqdm(_cogs, total=len(file_list)):
-            cogs.append(_cog)
-    else:
-        cogs = [
-            cogify(
-                source_file, destination=destination, config=config, base_url=base_url
-            )
-            for source_file in tqdm(file_list)
-        ]
+    cogs = [
+        cogify(source_file, destination=destination, config=config, base_url=base_url)
+        for source_file in tqdm(file_list)
+    ]
 
     print(f"transferred {len(cogs)} COGs to {destination}")
 
