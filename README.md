@@ -62,11 +62,6 @@ assets to COGs and copy them to a new storage location (either a local directory
 stac gladglobalforestchange create-cogs {assets} {destination} 
 ```
 
-> [!NOTE]
-> The `create-cogs` function uses [`coiled`](https://www.coiled.io/) to run the translate-and-upload
-> operations for thousands of files. If you run it in AWS you can expect the total cost to be
-> less than $2 for compute which is well within the free-tier for `coiled`.
-
 ## Contributing
 
 We use [pre-commit](https://pre-commit.com/) to check any changes.
