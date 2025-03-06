@@ -1,0 +1,185 @@
+{
+  "type": "Feature",
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://stac-extensions.github.io/projection/v1.2.0/schema.json"
+  ],
+  "id": "hansen-gfc-2023-v1.11-40N-080W",
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -70.0,
+          30.0
+        ],
+        [
+          -70.0,
+          40.0
+        ],
+        [
+          -80.0,
+          40.0
+        ],
+        [
+          -80.0,
+          30.0
+        ],
+        [
+          -70.0,
+          30.0
+        ]
+      ]
+    ]
+  },
+  "bbox": [
+    -80.0,
+    30.0,
+    -70.0,
+    40.0
+  ],
+  "properties": {
+    "proj:code": "EPSG:4326",
+    "proj:geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            -70.0,
+            30.0
+          ],
+          [
+            -70.0,
+            40.0
+          ],
+          [
+            -80.0,
+            40.0
+          ],
+          [
+            -80.0,
+            30.0
+          ],
+          [
+            -70.0,
+            30.0
+          ]
+        ]
+      ]
+    },
+    "proj:bbox": [
+      -80.0,
+      30.0,
+      -70.0,
+      40.0
+    ],
+    "proj:shape": [
+      40000,
+      40000
+    ],
+    "proj:transform": [
+      0.00025,
+      0.0,
+      -80.0,
+      0.0,
+      -0.00025,
+      40.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "proj:epsg": 4326,
+    "datetime": "2023-12-31T00:00:00Z"
+  },
+  "links": [
+    {
+      "rel": "root",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "GLAD: Global Forest Change 2000-2023 v1.11"
+    },
+    {
+      "rel": "collection",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "GLAD: Global Forest Change 2000-2023 v1.11"
+    },
+    {
+      "rel": "parent",
+      "href": "../collection.json",
+      "type": "application/json",
+      "title": "GLAD: Global Forest Change 2000-2023 v1.11"
+    }
+  ],
+  "assets": {
+    "gain": {
+      "href": "https://storage.googleapis.com/earthenginepartners-hansen/GFC-2023-v1.11/Hansen_GFC-2023-v1.11_gain_40N_080W.tif",
+      "type": "image/tiff; application=geotiff",
+      "title": "Global forest cover gain 2000-2012",
+      "description": "Forest gain during the period 2000-2012, defined as the inverse of loss, or a non-forest to forest change entirely within the study period. Encoded as either 1 (gain) or 0 (no gain).",
+      "raster:bands": [
+        {
+          "data_type": "uint8",
+          "scale": 1.0,
+          "offset": 0.0,
+          "sampling": "area"
+        }
+      ],
+      "roles": [
+        "data"
+      ]
+    },
+    "treecover2000": {
+      "href": "https://storage.googleapis.com/earthenginepartners-hansen/GFC-2023-v1.11/Hansen_GFC-2023-v1.11_treecover2000_40N_080W.tif",
+      "type": "image/tiff; application=geotiff",
+      "title": "Tree canopy cover for year 2000",
+      "description": "Tree cover in the year 2000, defined as canopy closure for all vegetation taller than 5m in height. Encoded as a percentage per output grid cell, in the range 0-100.",
+      "raster:bands": [
+        {
+          "data_type": "uint8",
+          "scale": 1.0,
+          "offset": 0.0,
+          "sampling": "area"
+        }
+      ],
+      "roles": [
+        "data"
+      ]
+    },
+    "lossyear": {
+      "href": "https://storage.googleapis.com/earthenginepartners-hansen/GFC-2023-v1.11/Hansen_GFC-2023-v1.11_lossyear_40N_080W.tif",
+      "type": "image/tiff; application=geotiff",
+      "title": "Year of gross forest cover loss event",
+      "description": "Forest loss during the period 2000-2023, defined as a stand-replacement disturbance, or a change from a forest to non-forest state. Encoded as either 0 (no loss) or else a value in the range 1-20, representing loss detected primarily in the year 2001-2023, respectively.",
+      "raster:bands": [
+        {
+          "data_type": "uint8",
+          "scale": 1.0,
+          "offset": 0.0,
+          "sampling": "area"
+        }
+      ],
+      "roles": [
+        "data"
+      ]
+    },
+    "datamask": {
+      "href": "https://storage.googleapis.com/earthenginepartners-hansen/GFC-2023-v1.11/Hansen_GFC-2023-v1.11_datamask_40N_080W.tif",
+      "type": "image/tiff; application=geotiff",
+      "title": "Data mask",
+      "description": "Three values representing areas of no data (0), mapped land surface (1), and persistent water bodies (2) based on 2000-2012.",
+      "raster:bands": [
+        {
+          "data_type": "uint8",
+          "scale": 1.0,
+          "offset": 0.0,
+          "sampling": "area"
+        }
+      ],
+      "roles": [
+        "data"
+      ]
+    }
+  },
+  "collection": "glad-global-forest-change-1.11"
+}

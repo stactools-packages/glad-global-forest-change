@@ -19,7 +19,14 @@ classifiers = [
     "Programming Language :: Python :: 3.13",
 ]
 requires-python = ">=3.10"
-dependencies = ["stactools>=0.4.0"]
+dependencies = [
+    "rasterio",
+    "parse>=1.20.2",
+    "pystac>=1.11.0,<2.0.0",
+    "rio-stac>=0.10.0",
+    "stactools>=0.5.0",
+    "semver>=3.0.4",
+]
 
 [dependency-groups]
 dev = [
@@ -30,12 +37,23 @@ dev = [
     "pytest~=8.2",
     "requests~=2.32",
     "ruff==0.8.3",
+    "ipython>=8.18.1",
+    "jupyterlab>=4.3.5",
 ]
-docs = ["pystac~=1.10", "ipykernel~=6.29", "jinja2~=3.1"]
+docs = ["ipykernel~=6.29", "jinja2~=3.1"]
 
 [project.urls]
 Github = "https://github.com/stactools-packages/glad-global-forest-change"
 Issues = "https://github.com/stactools-packages/glad-global-forest-change/issues"
+
+[project.optional-dependencies]
+cogs = [
+    "boto3>=1.37.1",
+    "httpx>=0.28.1",
+    "obstore>=0.4.0",
+    "rio-cogeo>=5.4.1",
+    "tqdm>=4.67.1",
+]
 
 [build-system]
 requires = ["setuptools", "wheel"]
