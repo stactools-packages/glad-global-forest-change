@@ -24,7 +24,7 @@ def to_url(s: str) -> str:
     if urllib.parse.urlparse(s).scheme:
         return s
     else:
-        return "file://" + str(Path(s).absolute())
+        return f"file://{str(Path(s).absolute())}"
 
 
 def get_file_list(assets: Tuple[str, ...]) -> List[str]:
@@ -34,10 +34,10 @@ def get_file_list(assets: Tuple[str, ...]) -> List[str]:
         if asset not in ASSETS:
             raise ValueError(f"{asset} is not a valid layer. must be one of {ASSETS}")
 
-        file_list_url = BASE_URL + f"/{asset}.txt"
+        file_list_url = f"{BASE_URL}/{asset}.txt"
         request = httpx.get(file_list_url)
         file_list.extend(
-            file.replace(BASE_URL + "/", "") for file in request.iter_lines()
+            file.replace(f"{BASE_URL}/", "") for file in request.iter_lines()
         )
 
     return file_list

@@ -10,8 +10,6 @@ from stactools.glad_global_forest_change.constants import ASSETS
 
 logger = logging.getLogger(__name__)
 
-DEFAULT_AWS_REGION = "us-west-2"
-
 
 def create_gladglobalforestchange_command(cli: Group) -> Command:
     """Creates the stactools-glad-global-forest-change command line utility."""
@@ -95,10 +93,6 @@ def create_gladglobalforestchange_command(cli: Group) -> Command:
     @click.argument(
         "destination",
         required=True,
-    )
-    @click.option(
-        "--region",
-        required=False,
     )
     def create_cogs_command(
         assets: Tuple[str, ...],

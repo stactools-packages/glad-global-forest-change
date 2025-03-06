@@ -59,7 +59,7 @@ This is a problem for many applications so we added the `create-cogs` function t
 assets to COGs and copy them to a new storage location (either a local directory or an S3 bucket).
 
 ```bash
-stac gladglobalforestchange create-cogs {assets} {destination} --region={region}
+stac gladglobalforestchange create-cogs {assets} {destination} 
 ```
 
 > [!NOTE]

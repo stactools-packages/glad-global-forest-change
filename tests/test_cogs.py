@@ -14,9 +14,7 @@ def test_create_cogs(tmp_path: Path) -> None:
             f"Hansen_GFC-2023-v1.11_{asset}_40N_080W.tif" for asset in REQUIRED_ASSETS
         ],
         destination=str(tmp_path),
-        region="us-west-2",
         base_url="file://" + test_data.get_path("data"),
-        use_coiled=False,
     )
 
     assert len(cogs) == len(REQUIRED_ASSETS)
