@@ -1,6 +1,6 @@
 [project]
 name = "stactools-glad-global-forest-change"
-version = "0.1.1"
+version = "0.1.2"
 description = "stactools package for the GLAD Global Forest Change dataset"
 readme = "README.md"
 authors = [{ name = "Henry Rodman", email = "henry@developmentseed.org" }]

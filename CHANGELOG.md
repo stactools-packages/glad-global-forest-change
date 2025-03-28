@@ -9,6 +9,12 @@ number as needed.
 
 ## [Unreleased]
 
+## [0.1.2]
+
+### Fixed
+
+- move optional `httpx` import into safe location
+
 ## [0.1.1]
 
 ### Fixed
@@ -35,5 +41,6 @@ number as needed.
 - Nothing.
 
 [Unreleased]: <https://github.com/stactools-packages/glad-global-forest-change/tree/main/>
+[0.1.2]: <https://github.com/stactools-packages/glad-global-forest-change/releases/tag/0.1.2>
 [0.1.1]: <https://github.com/stactools-packages/glad-global-forest-change/releases/tag/0.1.1>
 [0.1.0]: <https://github.com/stactools-packages/glad-global-forest-change/releases/tag/0.1.0>
