@@ -10,7 +10,6 @@ from datetime import timedelta
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
-import httpx
 import rasterio
 from rasterio.io import MemoryFile
 
@@ -29,6 +28,8 @@ def to_url(s: str) -> str:
 
 def get_file_list(assets: Tuple[str, ...]) -> List[str]:
     """Get the list of raw files for a set of assets"""
+    import httpx
+
     file_list: List[str] = []
     for asset in assets:
         if asset not in ASSETS:
