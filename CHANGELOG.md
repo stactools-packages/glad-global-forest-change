@@ -13,7 +13,7 @@ number as needed.
 
 ### Fixed
 
-- move optional import into safe location
+- move optional `httpx` import into safe location
 
 ## [0.1.1]
 

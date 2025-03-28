@@ -1,4 +1,5 @@
 version = 1
+revision = 1
 requires-python = ">=3.10"
 
 [[package]]
@@ -2553,7 +2554,7 @@ wheels = [
 
 [[package]]
 name = "stactools-glad-global-forest-change"
-version = "0.1.1"
+version = "0.1.2"
 source = { editable = "." }
 dependencies = [
     { name = "parse" },
@@ -2604,6 +2605,7 @@ requires-dist = [
     { name = "stactools", specifier = ">=0.5.0" },
     { name = "tqdm", marker = "extra == 'cogs'", specifier = ">=4.67.1" },
 ]
+provides-extras = ["cogs"]
 
 [package.metadata.requires-dev]
 dev = [
