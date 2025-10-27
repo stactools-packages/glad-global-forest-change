@@ -40,7 +40,7 @@ dev = [
     "ipython>=8.18.1",
     "jupyterlab>=4.3.5",
 ]
-docs = ["ipykernel~=6.29", "jinja2~=3.1"]
+docs = ["ipykernel~=7.1", "jinja2~=3.1"]
 
 [project.urls]
 Github = "https://github.com/stactools-packages/glad-global-forest-change"
