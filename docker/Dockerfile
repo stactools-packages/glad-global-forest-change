@@ -13,7 +13,7 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 ENV UV_LINK_MODE=copy \
   UV_COMPILE_BYTECODE=1 \
   UV_PYTHON_DOWNLOADS=never \
-  UV_PYTHON=python3.12 \
+  UV_PYTHON=python3.13 \
   UV_PROJECT_ENVIRONMENT=/opt/venv \
   PATH="/opt/venv/bin:$PATH"
 WORKDIR /opt/stactools-glad-global-forest-change
@@ -31,7 +31,7 @@ FROM dependencies as builder
 ENV UV_LINK_MODE=copy \
   UV_COMPILE_BYTECODE=1 \
   UV_PYTHON_DOWNLOADS=never \
-  UV_PYTHON=python3.12 \
+  UV_PYTHON=python3.13 \
   UV_PROJECT_ENVIRONMENT=/opt/venv \
   PATH="/opt/venv/bin:$PATH"
 WORKDIR /opt/stactools-glad-global-forest-change
@@ -50,7 +50,7 @@ FROM dependencies as dev-dependencies
 ENV UV_LINK_MODE=copy \
   UV_COMPILE_BYTECODE=1 \
   UV_PYTHON_DOWNLOADS=never \
-  UV_PYTHON=python3.12 \
+  UV_PYTHON=python3.13 \
   UV_PROJECT_ENVIRONMENT=/opt/venv \
   PATH="/opt/venv/bin:$PATH"
 WORKDIR /opt/stactools-glad-global-forest-change

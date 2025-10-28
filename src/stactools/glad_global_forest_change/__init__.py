@@ -1,5 +1,6 @@
 import stactools.core
 from stactools.cli.registry import Registry
+
 from stactools.glad_global_forest_change.stac import create_collection, create_item
 
 __all__ = ["create_collection", "create_item"]
